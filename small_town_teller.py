@@ -17,14 +17,14 @@ class Account:
 
 
 class Bank:
-    customers = {}
+    customers = []
     accounts = {}
 
     def add_customer(self, Person):
-        self.customers[Person.id] = Person
+        self.customers.append(Person)
 
     def add_account(self, Account):
-        self.accounts.update({Account.number: Account})
+        self.accounts.update({Account.number: Account}) if self.customers.__contains__(Account.owner) else print('Account is not from one of our Customers')
 
     def remove_account(self, Account):
         self.accounts.pop(Account.number)
